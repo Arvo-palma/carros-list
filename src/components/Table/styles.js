@@ -1,15 +1,8 @@
 // vitals
 import styled from 'styled-components';
 
-const TableStyled = styled.section`
-  .manage-users-title {
-    color: rgb(50, 50, 50);
-    font-size: 1.4em;
-    font-weight: 700;
-    margin-left: 5em;
-  }
-      
-  .manage-users-container {
+const TableStyled = styled.section`     
+  .manage-items-container {
     background-color: rgb(250, 250, 250);
     border-collapse: separate;
     border-spacing: 0 0.5em;
@@ -35,7 +28,6 @@ const TableStyled = styled.section`
         font-size: 1.2em;
         font-weight: 700;
         height: 2em;
-        text-align: center;
         width: 4%;
       }
         
