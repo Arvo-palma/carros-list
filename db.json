@@ -1,0 +1,39 @@
+{
+  "brands": [
+    {
+      "name": "Volkswagen"
+    },
+    {
+      "name": "Citroen"
+    },
+    {
+      "name": "Chevrolet"
+    }
+  ],
+  "cars": [
+    {
+      "name": "Gol",
+      "plate": "QJX-2932",
+      "color": "Azul",
+      "brand": "Volkswagen"
+    },
+    {
+      "name": "C3",
+      "plate": "QJU-9791",
+      "color": "Preto",
+      "brand": "Citroen"
+    },
+    {
+      "name": "Fox",
+      "plate": "QJX-2324",
+      "color": "Prata",
+      "brand": "Volkswagen"
+    },
+    {
+      "name": "Onix",
+      "plate": "QJX-2121",
+      "color": "Cinza",
+      "brand": "Chevrolet"
+    }
+  ]
+}
