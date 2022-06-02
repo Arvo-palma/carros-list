@@ -28,6 +28,7 @@ const TableStyled = styled.section`
         font-size: 1.2em;
         font-weight: 700;
         height: 2em;
+        text-align: center;
         width: 4%;
       }
         

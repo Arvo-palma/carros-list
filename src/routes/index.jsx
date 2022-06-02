@@ -8,6 +8,8 @@ import Carros from '../pages/Carros';
 import Marcas from '../pages/Marcas';
 import NovoCarro from '../pages/NovoCarro';
 import NovaMarca from '../pages/NovaMarca';
+import EditarCarro from '../pages/EditarCarro';
+import EditarMarca from '../pages/EditarMarca';
 
 // instances
 const queryClient = new QueryClient();
@@ -22,6 +24,8 @@ function Router() {
           <Route exact path="/marcas" element={ <Marcas /> } />
           <Route exact path="/carros/novo" element={ <NovoCarro /> } />
           <Route exact path="/marcas/novo" element={ <NovaMarca /> } />
+          <Route exact path="/carros/:id" element={ <EditarCarro /> } />
+          <Route exact path="/marcas/:id" element={ <EditarMarca /> } />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
