@@ -1,7 +1,7 @@
 // vitals
 import styled from 'styled-components';
 
-const PageTitleStyled = styled.p`
+const PageTitleStyled = styled.h1`
   align-items: left;
   display: flex;
   font-family: "Work Sans", sans-serif;

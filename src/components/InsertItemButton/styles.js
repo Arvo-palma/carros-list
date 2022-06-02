@@ -1,22 +1,16 @@
 // vitals
 import styled from 'styled-components';
 
-const InserButtonStyled = styled.button`
-  align-items: center;
-  background-color: #036b52;
-  display: flex;
-  font-family: "Work Sans", sans-serif;
-  justify-content: space-between;
-
-  > div {
-    display: flex;
-
-    button {
-      color: white;
-      padding: 1rem 3rem;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
+const InserButtonStyled = styled.div`
+  background-color: white;
+  color: ${({ color }) => color || "blue"};
+  padding: 10px;
+  border: 1px solid ${({ color }) => color || "blue"};
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: lightblue;
   }
 `;
 

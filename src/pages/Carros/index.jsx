@@ -9,6 +9,8 @@ import NavBar from '../../components/NavBar';
 import Table from '../../components/Table';
 import PageTitle from '../../components/PageTitle';
 import InserButton from '../../components/InsertItemButton';
+import Input from '../../components/Input';
+import Select from '../../components/Select';
 
 // styles
 import CarrosStyled from './styles';
@@ -29,6 +31,16 @@ function Carros() {
 
   // Treating data
   const carsData = { type: 'carros', list: data };
+  const options = data.map((car) => car.brand);
+
+  // Filters functions
+  const filterByPlate = () => {
+
+  }
+
+  const filterByBrand = () => {
+
+  }
 
   return (
     <CarrosStyled>
@@ -39,6 +51,16 @@ function Carros() {
         <div className="title-container">
           <PageTitle title="Carros" />
           <InserButton type='carros' />
+        </div>
+        <div className="filters-container">
+          <Input type="text" onChange={ filterByPlate } name="Filtrar por placa" />
+          <Select
+            id="brand-filter"
+            name="Filtrar por marca"
+            options={ options }
+            value={ options[0] }
+            onChange={ filterByBrand }
+          />
         </div>
         <div>
           <Table data={carsData} />
