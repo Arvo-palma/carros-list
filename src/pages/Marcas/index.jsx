@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 
 // tools
 import { useQuery } from 'react-query';
+import { useDeleteBrand } from '../../services/deleteBrand';
 
 // components
 import NavBar from '../../components/NavBar';
@@ -25,6 +26,7 @@ function Marcas() {
   };
 
   const {data, status} = useQuery("marcas", fecthBrands);
+  const { mutate } = useDeleteBrand();
 
   // Managing errors and delay
   if (status === 'loading') return <div>Carregando...</div>;
@@ -36,14 +38,22 @@ function Marcas() {
 
   // Edit brand functions
   const editBrand = (target) => {
-    const { id } = target.nativeEvent.path[2];
+    const id = target.target.value;;
 
     setEdit(id);
   }
 
   // Delete brand functions
-  const deleteBrand = () => {
-    console.log('funcionalidade em desenvolvimento');
+  const deleteBrand = (target) => {
+    const id = target.target.value;
+
+    const text = "Tem certeza que deseja excluir esta marca?\nEssa ação não poderá ser desfeita."
+
+    if(window.confirm(text) === true) {
+      mutate(parseInt(id));
+    } else {
+      console.log('Exclusão cancelada');
+    }
   }
 
   return (

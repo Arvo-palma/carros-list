@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 
 // services
 import { useQuery } from 'react-query';
+import { useDeleteCar } from '../../services/deleteCar';
 
 // components
 import NavBar from '../../components/NavBar';
@@ -28,6 +29,7 @@ function Carros() {
   };
 
   const {data, status} = useQuery("carros", fecthCars);
+  const { mutate } = useDeleteCar();
 
   // Managing errors and delay
   if (status === 'loading') return <div>Carregando...</div>;
@@ -70,14 +72,21 @@ function Carros() {
 
   // Edit car functions
   const editCar = (target) => {
-    const { id } = target.nativeEvent.path[2];
+    const id = target.target.value;;
 
     setEdit(id);
   }
 
   // Delete car functions
-  const deleteCar = () => {
-    console.log('funcionalidade em desenvolvimento');
+  const deleteCar = (target) => {
+    const id = target.target.value;;
+    const text = "Tem certeza que deseja excluir este carro?\nEssa ação não poderá ser desfeita."
+
+    if(window.confirm(text) === true) {
+      mutate(parseInt(id));
+    } else {
+      console.log('Exclusão cancelada');
+    }
   }
 
   return (

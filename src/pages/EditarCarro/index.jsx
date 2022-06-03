@@ -17,6 +17,7 @@ import EditarCarroStyled from './styles';
 
 function EditarCarro(props) {
   const { id } = props;
+
   // states
   const [plate, setPlate] = useState();
   const [brand, setBrand] = useState();
@@ -25,30 +26,30 @@ function EditarCarro(props) {
   const [posted, setPosted] = useState(false);
   const [redirect, setShouldRedirect] = useState(false);
 
-  // Fetching from API with reactQuery
+  // Fetching from API with reactQuery 
   const fecthOptions = async () => {
     const response = await fetch('http://localhost:3000/brands');
     return response.json();
   };
-
+  
   const {data, status} = useQuery("options", fecthOptions);
   const { mutate } = useMutation(useUpdateCar);
-
+  
   // Managing errors and delay
   if (status === 'loading') return <div>Carregando...</div>;
-
+  
   if (status === 'error') return <div>Erro no carregamento</div>;
-
+  
   // Treating data
   const options = data.map((brand) => brand.name);
   options.unshift('');
-
+  
   // Submiting responses
   const handleSubmit = (e) => {
     e.preventDefault();
     plate && color && brand !== '' ? saveForm() : setIncomplete(true);
   }
-
+  
   const saveForm = async () => {
     const newCar = {
       id,
@@ -58,8 +59,7 @@ function EditarCarro(props) {
       brand: brand,
     }
 
-    const response = mutate(id, newCar);
-    console.log(response);
+    mutate(id, newCar);
     setPosted(true);
   }
 

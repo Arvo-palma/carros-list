@@ -27,7 +27,7 @@ function NovaMarca() {
   // Submiting responses
   const handleSubmit = (e) => {
     e.preventDefault();
-    brand !== '' ? saveForm() : setIncomplete(true);
+    brand ? saveForm() : setIncomplete(true);
   }
 
   const saveForm = async () => {
