@@ -19,6 +19,7 @@ function NovaMarca() {
   const [brand, setBrand] = useState();
   const [incomplete, setIncomplete] = useState(false);
   const [posted, setPosted] = useState(false);
+  const [redirect, setShouldRedirect] = useState(false);
 
   // Fetching from API with reactQuery
   const { mutate } = useAddBrand();
@@ -42,6 +43,7 @@ function NovaMarca() {
   return (
     <NovaMarcaStyled>
       { posted && <Navigate to='/marcas' /> }
+      { redirect && <Navigate to='/carros' /> }
       <section>
         <nav>
           <NavBar />
@@ -66,10 +68,14 @@ function NovaMarca() {
           <button
             type="submit"
             onClick={ handleSubmit }
+            className="submit-button"
           >
             Salvar
           </button>
-          <button>
+          <button
+            className="return-button"
+            onClick={ () => setShouldRedirect(true) }
+          >
             Voltar
           </button>
         </div>

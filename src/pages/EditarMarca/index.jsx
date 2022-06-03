@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 // services
-import { useMutation, useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 import { useEditBrand } from '../../services/editBrand';
 
 // components
@@ -12,7 +12,7 @@ import PageTitle from '../../components/PageTitle';
 import Input from '../../components/Input';
 
 // styles
-import editarMarcaStyled from './styles';
+import EditarMarcaStyled from './styles';
 
 function EditarMarca(props) {
   const { id } = props;
@@ -22,6 +22,7 @@ function EditarMarca(props) {
   const [ID, setID] = useState(id);
   const [incomplete, setIncomplete] = useState(false);
   const [posted, setPosted] = useState(false);
+  const [redirect, setShouldRedirect] = useState(false);
 
   // Fetching from API with reactQuery
   const { mutate } = useMutation(useEditBrand);
@@ -44,8 +45,9 @@ function EditarMarca(props) {
   }
 
   return (
-    <editarMarcaStyled>
+    <EditarMarcaStyled>
       { posted && <Navigate to='/marcas' /> }
+      { redirect && <Navigate to='/marcas' /> }
       <section>
         <nav>
           <NavBar />
@@ -70,15 +72,19 @@ function EditarMarca(props) {
           <button
             type="submit"
             onClick={ handleSubmit }
+            className="submit-button"
           >
             Salvar
           </button>
-          <button>
+          <button
+            className="return-button"
+            onClick={ () => setShouldRedirect(true) }
+          >
             Voltar
           </button>
         </div>
       </section>
-    </editarMarcaStyled>
+    </EditarMarcaStyled>
   )
 }
 

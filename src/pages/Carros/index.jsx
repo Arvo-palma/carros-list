@@ -1,5 +1,6 @@
 // vitals
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // services
 import { useQuery } from 'react-query';
@@ -14,11 +15,13 @@ import Select from '../../components/Select';
 
 // styles
 import CarrosStyled from './styles';
-import { Navigate } from 'react-router-dom';
 
 function Carros() {
   // state
   const [edit, setEdit] = useState(false);
+  const [filterPlate, setFilterPlate] = useState();
+  const [filterBrand, setFilterBrand] = useState();
+  const [filter, setFilter] = useState(false);
 
   // Fetching from API with reactQuery
   const fecthCars = async () => {
@@ -39,19 +42,39 @@ function Carros() {
   options.unshift('');
 
   // Filters functions
-  const filterByPlate = () => {
+  const filter1 = data.filter((car) => {
+    return car.plate.includes(filterPlate)
+  });
 
+  const filter2 = filter1.filter((car) => {
+    return car.plate.includes(filterBrand)
+  });
+
+  const filterByPlate = (e) => {
+    setFilterPlate(e.target.value);
+    const filteredData = { type: 'carros', list: filter2 };
+    console.log('funcionalidade em desenvolvimento');
+    setFilter(filteredData);
   }
 
-  const filterByBrand = () => {
-
+  const filterByBrand = (e) => {
+    setFilterBrand(e.target.value);
+    const filteredData = { type: 'carros', list: filter2 };
+    console.log('funcionalidade em desenvolvimento');
+    setFilter(filteredData);
   }
+
 
   // Edit car functions
   const editCar = (target) => {
     const { id } = target.nativeEvent.path[2];
 
     setEdit(id);
+  }
+
+  // Delete car functions
+  const deleteCar = () => {
+    console.log('funcionalidade em desenvolvimento');
   }
 
   return (
@@ -66,19 +89,19 @@ function Carros() {
           <InserButton type='carros' />
         </div>
         <div className="filters-container">
-          <Input type="text" onChange={ filterByPlate } name="Filtrar por placa" />
+          <Input type="text" onChange={ (e) => filterByPlate(e) } name="Filtrar por placa" />
           <Select
             id="brand-filter"
             name="Filtrar por marca"
             options={ options }
-            value={ options[0] }
-            onChange={ filterByBrand }
+            onChange={ (e) => filterByBrand(e) }
           />
         </div>
         <div>
           <Table
             data={carsData}
             editItem={ editCar }
+            deleteItem={ deleteCar }
           />
         </div>
       </section>

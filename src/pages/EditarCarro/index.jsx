@@ -13,7 +13,7 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 
 // styles
-import editarCarroStyled from './styles';
+import EditarCarroStyled from './styles';
 
 function EditarCarro(props) {
   const { id } = props;
@@ -23,6 +23,7 @@ function EditarCarro(props) {
   const [color, setColor] = useState();
   const [incomplete, setIncomplete] = useState(false);
   const [posted, setPosted] = useState(false);
+  const [redirect, setShouldRedirect] = useState(false);
 
   // Fetching from API with reactQuery
   const fecthOptions = async () => {
@@ -63,8 +64,9 @@ function EditarCarro(props) {
   }
 
   return (
-    <editarCarroStyled>
+    <EditarCarroStyled>
       { posted && <Navigate to='/carros' /> }
+      { redirect && <Navigate to='/carros' /> }
       <section>
         <nav>
           <NavBar />
@@ -95,15 +97,19 @@ function EditarCarro(props) {
           <button
             type="submit"
             onClick={ handleSubmit }
+            className="submit-button"
           >
             Salvar
           </button>
-          <button>
+          <button
+            className="return-button"
+            onClick={ () => setShouldRedirect(true) }
+          >
             Voltar
           </button>
         </div>
       </section>
-    </editarCarroStyled>
+    </EditarCarroStyled>
   )
 }
 

@@ -1,5 +1,6 @@
 // vitals
-import React from 'react';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // tools
 import { useQuery } from 'react-query';
@@ -14,6 +15,9 @@ import InserButton from '../../components/InsertItemButton';
 import MarcasStyled from './styles';
 
 function Marcas() {
+  // state
+  const [edit, setEdit] = useState(false);
+
   // Fetching from API with reactQuery
   const fecthBrands = async () => {
     const response = await fetch('http://localhost:3000/brands');
@@ -30,8 +34,21 @@ function Marcas() {
   // Treating data
   const brandsData = { type: 'marcas', list: data };
 
+  // Edit brand functions
+  const editBrand = (target) => {
+    const { id } = target.nativeEvent.path[2];
+
+    setEdit(id);
+  }
+
+  // Delete brand functions
+  const deleteBrand = () => {
+    console.log('funcionalidade em desenvolvimento');
+  }
+
   return (
     <MarcasStyled >
+      { edit && <Navigate to={`/marcas/${edit}`} /> }
       <section>
         <nav>
           <NavBar />
@@ -41,7 +58,11 @@ function Marcas() {
           <InserButton type='marcas' />
         </div>
         <div>
-          <Table data={brandsData} />
+          <Table
+            data={brandsData}
+            editItem={ editBrand }
+            deleteItem={ deleteBrand }
+          />
         </div>
       </section>
     </MarcasStyled>

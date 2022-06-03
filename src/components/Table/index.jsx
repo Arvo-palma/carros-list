@@ -86,7 +86,7 @@ function Table({ data, editItem, deleteItem }) {
               </td>
             </tr>
           )) : data.list.map((brand, index) => (
-            <tr className="row-body" key={ brand.id }>
+            <tr className="row-body" key={ brand.id } id={ index }>
               <td
                 className="column-brand"
                 data-testid={ `table-brand-row${index + 1}` }
@@ -127,7 +127,6 @@ function Table({ data, editItem, deleteItem }) {
 }
 
 Table.propTypes = {
-  data: PropTypes.objectOf(PropTypes.shape()).isRequired,
   editItem: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };

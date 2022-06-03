@@ -22,6 +22,7 @@ function NovoCarro() {
   const [color, setColor] = useState();
   const [incomplete, setIncomplete] = useState(false);
   const [posted, setPosted] = useState(false);
+  const [redirect, setShouldRedirect] = useState(false);
 
   // Fetching from API with reactQuery
   const fecthOptions = async () => {
@@ -61,7 +62,8 @@ function NovoCarro() {
 
   return (
     <NovoCarroStyled>
-      { posted && <Navigate to='/carros' /> }
+      { posted  && <Navigate to='/carros' /> }
+      { redirect && <Navigate to='/carros' /> }
       <section>
         <nav>
           <NavBar />
@@ -92,10 +94,14 @@ function NovoCarro() {
           <button
             type="submit"
             onClick={ handleSubmit }
+            className="submit-button"
           >
             Salvar
           </button>
-          <button>
+          <button
+            className="return-button"
+            onClick={ () => setShouldRedirect(true) }
+          >
             Voltar
           </button>
         </div>
