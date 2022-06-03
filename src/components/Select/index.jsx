@@ -15,6 +15,7 @@ function Select (props) {
           id={ id }
           onChange={ onChange }
           value={ value }
+          className="brand-select"
         >
           {
             options.map((option, index) => (
@@ -37,7 +38,7 @@ Select.propTypes = {
   id: string.isRequired,
   onChange: func.isRequired,
   name: string,
-  value: string.isRequired,
+  value: string,
   options: oneOfType([arrayOf(string), arrayOf(object)]),
 };
 

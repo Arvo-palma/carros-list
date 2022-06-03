@@ -11,6 +11,10 @@ const InputStyled = styled.div`
   border: none;
   margin-left: 10px;
 
+  .filter-input {
+    margin-left: 10px;
+  }
+
   > div {
     display: flex;
   }

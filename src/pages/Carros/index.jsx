@@ -1,7 +1,7 @@
 // vitals
 import React from 'react';
 
-// tools
+// services
 import { useQuery } from 'react-query';
 
 // components

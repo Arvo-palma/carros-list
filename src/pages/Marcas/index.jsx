@@ -36,7 +36,7 @@ function Marcas() {
         <nav>
           <NavBar />
         </nav>
-        <div>
+        <div className="title-container">
           <PageTitle title="Marcas" />
           <InserButton type='marcas' />
         </div>
