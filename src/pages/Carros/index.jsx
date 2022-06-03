@@ -1,5 +1,5 @@
 // vitals
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 // services
@@ -19,8 +19,6 @@ import CarrosStyled from './styles';
 function Carros() {
   // state
   const [edit, setEdit] = useState(false);
-  const [filterPlate, setFilterPlate] = useState();
-  const [filterBrand, setFilterBrand] = useState();
   const [filter, setFilter] = useState(false);
 
   // Fetching from API with reactQuery
@@ -42,26 +40,31 @@ function Carros() {
   options.unshift('');
 
   // Filters functions
-  const filter1 = data.filter((car) => {
-    return car.plate.includes(filterPlate)
-  });
-
-  const filter2 = filter1.filter((car) => {
-    return car.plate.includes(filterBrand)
-  });
-
   const filterByPlate = (e) => {
-    setFilterPlate(e.target.value);
-    const filteredData = { type: 'carros', list: filter2 };
-    console.log('funcionalidade em desenvolvimento');
+    const filter1 = data.filter((car) => {
+      return car.plate.includes(e.target.value)
+    });
+
+    const filteredData = { type: 'carros', list: filter1 };
+
     setFilter(filteredData);
   }
 
   const filterByBrand = (e) => {
-    setFilterBrand(e.target.value);
+    const filter2 = data.filter((car) => {
+      return car.brand.includes(e.target.value)
+    });
+
     const filteredData = { type: 'carros', list: filter2 };
-    console.log('funcionalidade em desenvolvimento');
     setFilter(filteredData);
+  }
+
+  const checkFilter = () => {
+    if(filter) {
+      return filter;
+    } else {
+      return carsData;
+    }
   }
 
 
@@ -99,7 +102,7 @@ function Carros() {
         </div>
         <div>
           <Table
-            data={carsData}
+            data={checkFilter()}
             editItem={ editCar }
             deleteItem={ deleteCar }
           />
