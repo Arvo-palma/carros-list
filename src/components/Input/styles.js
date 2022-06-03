@@ -15,6 +15,10 @@ const InputStyled = styled.div`
     margin-left: 10px;
   }
 
+  .input-label {
+    font-size: 20px;
+  }
+
   > div {
     display: flex;
   }

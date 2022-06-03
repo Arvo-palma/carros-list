@@ -39,16 +39,17 @@ function NovoCarro() {
 
   // Treating data
   const options = data.map((brand) => brand.name);
+  options.unshift('');
 
   // Submiting responses
   const handleSubmit = (e) => {
     e.preventDefault();
-    plate && color ? saveForm() : setIncomplete(true);
+    plate && color && brand !== '' ? saveForm() : setIncomplete(true);
   }
 
   const saveForm = async () => {
     const newCar = {
-      name: 'novo',
+      name: 'sem nome',
       plate: plate,
       color: color,
       brand: brand,

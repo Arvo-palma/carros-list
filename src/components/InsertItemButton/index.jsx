@@ -13,7 +13,9 @@ function InserButton(props) {
     setShouldRedirect(true);
   };
 
-  if (shouldRedirect) return (<Navigate to="/carros/novo" />);
+  if (shouldRedirect) return (
+    type === 'carros' ? <Navigate to="/carros/novo" /> : <Navigate to="/marcas/novo" />
+  );
 
   return (
     <InserButtonStyled id="insert-button">

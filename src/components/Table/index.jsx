@@ -40,7 +40,7 @@ function Table({ data, editItem, deleteItem }) {
         </thead>
         <tbody>
           { data.type === "carros" ? data.list.map((car, index) => (
-            <tr className="row-body" key={ index }>
+            <tr className="row-body" key={ index } id={ index }>
               <td
                 className="column-plate"
                 data-testid={ `table-car-plate-${index + 1}` }

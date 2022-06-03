@@ -9,7 +9,7 @@ function Select (props) {
   const { id, onChange, name, options, value } = props;
   return (
     <SelectStyled>
-      <label htmlFor={ id }>
+      <label htmlFor={ id } className="select-label">
         { name }
         <select
           id={ id }

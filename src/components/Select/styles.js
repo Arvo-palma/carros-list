@@ -25,6 +25,10 @@ const SelectStyled = styled.div`
     min-height: 20px;
     padding: 0px 2px 1px;
   }
+
+  .select-label {
+    font-size: 20px;
+  }
 `;
 
 export default SelectStyled;

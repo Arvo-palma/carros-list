@@ -1,5 +1,5 @@
 // vitals
-import React from 'react';
+import React, { useState } from 'react';
 
 // services
 import { useQuery } from 'react-query';
@@ -14,8 +14,12 @@ import Select from '../../components/Select';
 
 // styles
 import CarrosStyled from './styles';
+import { Navigate } from 'react-router-dom';
 
 function Carros() {
+  // state
+  const [edit, setEdit] = useState(false);
+
   // Fetching from API with reactQuery
   const fecthCars = async () => {
     const response = await fetch('http://localhost:3000/cars');
@@ -32,6 +36,7 @@ function Carros() {
   // Treating data
   const carsData = { type: 'carros', list: data };
   const options = data.map((car) => car.brand);
+  options.unshift('');
 
   // Filters functions
   const filterByPlate = () => {
@@ -42,8 +47,16 @@ function Carros() {
 
   }
 
+  // Edit car functions
+  const editCar = (target) => {
+    const { id } = target.nativeEvent.path[2];
+
+    setEdit(id);
+  }
+
   return (
     <CarrosStyled>
+      { edit && <Navigate to={`/carros/${edit}`} /> }
       <section>
         <nav>
           <NavBar />
@@ -63,7 +76,10 @@ function Carros() {
           />
         </div>
         <div>
-          <Table data={carsData} />
+          <Table
+            data={carsData}
+            editItem={ editCar }
+          />
         </div>
       </section>
     </CarrosStyled>

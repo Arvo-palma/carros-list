@@ -1,35 +1,42 @@
 {
   "brands": [
     {
+      "id": 0,
       "name": "Volkswagen"
     },
     {
+      "id": 1,
       "name": "Citroen"
     },
     {
+      "id": 2,
       "name": "Chevrolet"
     }
   ],
   "cars": [
     {
+      "id": 0,
       "name": "Gol",
       "plate": "QJX-2932",
       "color": "Azul",
       "brand": "Volkswagen"
     },
     {
+      "id": 1,
       "name": "C3",
       "plate": "QJU-9791",
       "color": "Preto",
       "brand": "Citroen"
     },
     {
+      "id": 2,
       "name": "Fox",
       "plate": "QJX-2324",
       "color": "Prata",
       "brand": "Volkswagen"
     },
     {
+      "id": 3,
       "name": "Onix",
       "plate": "QJX-2121",
       "color": "Cinza",

@@ -8,6 +8,7 @@ const PageTitleStyled = styled.h1`
   justify-content: space-between;
 
     p {
+      font-size: 30px;
       padding: 1rem 3rem;
       text-decoration: none;
       text-transform: uppercase;

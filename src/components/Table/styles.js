@@ -12,7 +12,6 @@ const TableStyled = styled.section`
     width: 85%;
 
     .row-header {
-
       .column-header {
         font-size: 1em;
         font-weight: 400;
@@ -32,7 +31,7 @@ const TableStyled = styled.section`
         width: 4%;
       }
         
-      .column-name {
+      .column-plate {
         background-color: rgb(234, 241, 239);
         font-size: 1.2em;
         height: 2em;
@@ -40,7 +39,7 @@ const TableStyled = styled.section`
         width: 28%;
       }
         
-      .column-email {
+      .column-color {
         background-color: rgb(3, 107, 82);
         color: white;
         font-size: 1.2em;
@@ -50,7 +49,7 @@ const TableStyled = styled.section`
         width: 28%;
       }
         
-      .column-role {
+      .column-brand {
         background-color: rgb(66, 25, 129);
         color: white;
         font-size: 1.2em;
@@ -60,24 +59,24 @@ const TableStyled = styled.section`
         width: 28%;
       }
         
-      .column-button {
+      .column-action {
         background-color: rgb(5, 108, 249);
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;
         height: 2em;
         text-align: center;
         width: 12%;
+      }
 
-        .delete-user {
-          background-color: rgb(5, 108, 249);
-          border: transparent;
-          border-bottom-right-radius: 5px;
-          border-top-right-radius: 5px;
-          color: white;
-          font-size: 1.2em;
-          font-weight: 700;
-          height: 100%;
-          width: 100%;
+      .delete-car, .edit-car, .delete-brand, .edit-brand {
+        background-color: rgb(5, 108, 249);
+        color: ${({ color }) => color || "white"};
+        padding: 3px;
+        border: 1px solid ${({ color }) => color || "white"};
+        display: inline-block;
+        cursor: pointer;
+        &:hover {
+          background-color: lightblue;
         }
       }
     }

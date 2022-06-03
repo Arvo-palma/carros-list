@@ -9,7 +9,7 @@ function Input(props) {
 
   return (
     <InputStyled id="filter-input">
-      <label htmlFor={ type }>
+      <label htmlFor={ type } className="input-label">
         { name }
         <input
           id={ type }
